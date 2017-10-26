@@ -1,0 +1,29 @@
+Cordova in Camera Plugin        
+  index.html
+            <div>
+                    <button id = "cameraTakePicture">TAKE PICTURE</button>
+                    <img id = "myImage"></img>
+            </div>
+  index.js
+
+ onDeviceReady function put
+
+document.getElementById("cameraTakePicture").addEventListener("click", cameraTakePicture);
+
+at the Buttom of JS file
+
+function cameraTakePicture() { 
+    navigator.camera.getPicture(onSuccess, onFail, {  
+       quality: 50, 
+       destinationType: Camera.DestinationType.DATA_URL 
+    });  
+    
+    function onSuccess(imageData) { 
+       var image = document.getElementById('myImage'); 
+       image.src = "data:image/jpeg;base64," + imageData; 
+    }  
+    
+    function onFail(message) { 
+       alert('Failed because: ' + message); 
+    } 
+ }
